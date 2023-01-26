@@ -60,6 +60,8 @@ public class bibi {
                 System.out.println(negMax);
             else
                 System.out.println(posMin);
+
+                
             t--;
         }
     }
