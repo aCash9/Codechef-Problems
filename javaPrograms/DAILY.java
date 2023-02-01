@@ -3,19 +3,6 @@ package CompetitiveCodingCodeChief.javaPrograms;
 import java.util.*;
 
 public class DAILY {
-    static boolean isPrime(int n) {
-        // Corner case
-        if (n <= 1)
-            return false;
-
-        // Check from 2 to n-1
-        for (int i = 2; i < n; i++)
-            if (n % i == 0)
-                return false;
-
-        return true;
-    }
-
     static int nCr(int n, int r) {
         return fact(n) / (fact(r) *
                 fact(n - r));
@@ -37,17 +24,18 @@ public class DAILY {
         for (int i = 0; i < 36; i++) {
             if (str.charAt(i) == '0')
                 free[j]++;
-            if (isPrime(i) && i != 2) {
+            if ((i + 1) % 4 == 0) {
                 j++;
             }
         }
+
         j = 8;
         for (int i = 36; i < 54; i++) {
-            if (isPrime(i) && i != 2) {
-                j--;
-            }
             if (str.charAt(i) == '0')
                 free[j]++;
+            if ((i + 1) % 2 == 0) {
+                j--;
+            }
         }
         return free;
     }
@@ -66,11 +54,13 @@ public class DAILY {
         int ways = 0;
         for (int i = 0; i < n; i++) {
             int[] free = helper(str[i], x);
+
             for (int j = 0; j < free.length; j++) {
-                if (free[i] >= x) {
-                    ways += nCr(free[i], x);
+                if (free[j] >= x) {
+                    ways += nCr(free[j], x);
                 }
             }
+
         }
         System.out.println(ways);
 
