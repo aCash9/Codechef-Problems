@@ -22,19 +22,8 @@ public class EVMHACK {
                 System.out.println("Yes");
                 continue;
             }
-            int min, max;
-            if (p > q && p > r) {
-                min = a;
-                max = p;
-            } else if (q > r) {
-                min = b;
-                max = q;
-            } else {
-                min = c;
-                max = r;
-            }
-
-            int votes = a + b + c + max - min;
+            
+            int votes = a + b + c + Math.max(p-a,Math.max(q-b, r-c));
 
             if (votes > half)
                 System.out.println("Yes");
