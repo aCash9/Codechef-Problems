@@ -9,22 +9,20 @@ public class QTOO_2523 {
         while (t-- > 0) {
             int n = sc.nextInt();
             String str = sc.next();
-            HashMap<Character, Integer> map = new HashMap<>();
-            for (int i = 0; i < n; i++) {
-                char ch = str.charAt(i);
-                map.put(ch, map.getOrDefault(ch, 0) + 1);
-            }
-            int min = Integer.MAX_VALUE;
-            for (Map.Entry<Character, Integer> ele : map.entrySet()) {
-                int freq = ele.getValue();
-                if (freq == 1)
-                    continue;
-                min = Math.min(min, freq);
-            }
-            if (min == Integer.MAX_VALUE)
+            if(n <= 2)
                 System.out.println(-1);
-            else
-                System.out.println(n - min);
+            ArrayList<Character> l = new ArrayList<>();
+            int flag = 0;
+            for (int i = 0; i < n; i++) {
+                if(l.contains(str.charAt(i)))
+                    flag = 1;
+                else 
+                    l.add(str.charAt(i));
+            }
+            if(flag == 1)
+                System.out.println(n-2);
+                else 
+                System.out.println(-1);
         }
     }
 }
